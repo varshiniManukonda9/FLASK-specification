@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(26, 10, 100, 0.8);
+            color: white;
+            margin: 100px;
+            padding: 20px;
+        }
+        .container {
+            background-color: rgba(235, 235, 238, 0.671);
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        input, select {
+            margin: 10px 0;
+            padding: 10px;
+            width: 90%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Update Product</h1>
+        <form action="/updateproduct" method="POST">
+            <input type="hidden" name="product_name" value="{{ product['product_name'] }}">
+            <div>
+                <label for="field">Field to Update:</label>
+                <select name="field" id="field" required>
+                    <option value="product_name">Product Name</option>
+                    <option value="category">Category</option>
+                    <option value="price">Price</option>
+                    <option value="quantity">Quantity</option>
+                </select>
+            </div>
+            <div>
+                <label for="new_value">New Value:</label>
+                <input type="text" name="new_value" id="new_value" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

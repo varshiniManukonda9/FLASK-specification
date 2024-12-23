@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(26, 10, 100, 0.8);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar with Right-aligned Button */
+        .navdiv {
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+            gap: 20px;
+            padding: 10px 20px;
+        }
+
+        .navdiv .text {
+            color: white;
+            font-size: 18px;
+        }
+
+        .navdiv button {
+            background-color: hsla(240, 100%, 100%, 0.918);
+            color: rgba(26, 10, 100, 0.8);
+            border: none;
+            padding: 1rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .navdiv button a {
+            text-decoration: none;
+            color: rgba(26, 10, 100, 0.8);
+            font-weight: bold;
+        }
+
+        .navdiv button:hover {
+            background-color: #616163;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(235, 235, 238, 0.671);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: rgba(26, 10, 100, 0.8);
+            border-radius: 8px;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .card h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .details-btn {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .details-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation with Text and Button -->
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="text">Want to add a new product?</div> <!-- Text before button -->
+            <button><a href="/addproductpage">+ Add Product</a></button>
+        </div>  
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="container">
+        <h1>Products</h1>
+
+        <!-- Dashboard Flex Grid for Cards -->
+        <div class="dashboard">
+            {% if products %}
+              {% for product in products %}
+              <div class="card">
+              <h3>{{ product['product_name'] }}</h3>
+              <a class="details-btn" href="/productdetails?product_name={{ product['product_name'] }}">Details</a>
+         </div>
+       {% endfor %}
+    {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

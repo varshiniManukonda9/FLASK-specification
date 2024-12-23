@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Product</title>
+    <link rel="stylesheet" href="style2.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: rgba(26, 10, 100, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .add-product {
+        background-color: rgba(235, 235, 238, 0.671);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 555px;
+        box-sizing: border-box;
+      }
+
+      .add-product-form h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: rgba(26, 10, 100, 0.8);
+      }
+
+      .add-product-form input,
+      .add-product-form select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      .add-product-form input::placeholder {
+        color: rgba(97, 94, 112, 0.8);
+      }
+
+      .price-note {
+        font-size: 16px;
+        color: rgba(26, 10, 100, 0.8);
+        margin-top: -10px;
+        margin-bottom: 10px;
+      }
+
+      .add-product-form button {
+        width: 70%;
+        padding: 10px;
+        margin: auto;
+        display: block;
+        background-color: rgba(26, 10, 100, 0.8);
+        color: rgba(252, 251, 253, 0.8);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .add-product-form button:hover {
+        background-color: #616163;
+      }
+
+      .cancel-link {
+        margin-top: 15px;
+        font-size: 14px;
+        color: rgba(26, 10, 100, 0.8);
+        text-align: center;
+      }
+
+      .cancel-link button {
+        background-color: #141414;
+        padding: 0.5rem 1rem;
+        border-radius: 10px;
+      }
+
+      .cancel-link button:hover {
+        background-color: rgba(26, 10, 100, 0.8);
+      }
+
+      .cancel-link a {
+        color: rgba(250, 250, 250, 0.966);
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .cancel-link a:hover {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="add-product">
+      <form
+        class="add-product-form"
+        action="{{ url_for('addproduct') }}"
+        method="POST"
+      >
+        <h2>Add Product</h2>
+        <input
+          type="text"
+          name="product_name"
+          placeholder="Product Name"
+          required
+        />
+        <select name="category" required>
+          <option value="">Select Category</option>
+          <option value="electronics">Electronics</option>
+          <option value="clothing">Clothing</option>
+          <option value="home_appliances">Home Appliances</option>
+          <option value="books">Books</option>
+          <option value="toys">Toys</option>
+         
+        </select>
+        <input
+          type="number"
+          name="quantity"
+          placeholder="Quantity"
+          required
+          min="1"
+        />
+        <input
+          type="number"
+          name="price"
+          placeholder="Price (INR)"
+          required
+          min="0"
+          step="0.01"
+        />
+        <p class="price-note">Price must be in INR (e.g., 499.99).</p>
+        <a href="/dashboard">
+        <button type="submit">Add Product</button>
+        </a>
+      </form>
+      <div class="cancel-link">
+        <a href="/"><button>Cancel</button></a>
+      </div>
+    </div>
+  </body>
+</html>

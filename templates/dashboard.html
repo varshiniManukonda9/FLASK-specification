@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #3c237c;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #321e63;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        .navbar .add-product-btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: white;
+            color: #3c237c;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .navbar .add-product-btn:hover {
+            background-color: #e6e6e6;
+        }
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+        .container h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #26154c;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: white;
+        }
+        .product-card button {
+            background-color: #33cc33;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .product-card button:hover {
+            background-color: #28a428;
+        }
+        .favorite-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        .favorite-icon:hover {
+            color: #ff6b6b;
+        }
+        .favorite-icon.active {
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <a href="/">Home</a>
+            <a href="/dashboard">Products</a>
+            <a href="/favorites">Favorites</a>
+        </div>
+        <a href="/addproductpage" class="add-product-btn">+ Add Product</a>
+    </div>
+    <div class="container">
+        <h1>Products</h1>
+        <div class="product-grid">
+            {% for product in products %}
+    <div class="product-card">
+        
+        <h3>{{ product.product_name }}</h3>
+        <button onclick="window.location.href='/productdetails?product_name={{ product.product_name }}'">Details</button>
+    </div>
+{% endfor %}
+
+        </div>
+    </div>
+    <script>
+        async function toggleFavorite(productId, icon) {
+            const isFavorite = icon.classList.contains('active');
+            const url = isFavorite ? '/remove-from-favorites' : '/add-to-favorites';
+        
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ product_id: productId })
+            });
+        
+            if (response.ok) {
+                icon.classList.toggle('active');
+            } else {
+                console.log('Error updating favorite status.');
+            }
+        }
+        
+    </script>
+</body>
+</html>

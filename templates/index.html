@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style">
+    <style>
+
+
+
+      .navbar {
+          background-color: rgba(26, 10, 100, 0.8);
+          box-shadow: 0 4px 6px rgba(235, 235, 238, 0.671);
+          padding: 1.5rem;
+          border-radius: 15px;
+          justify-content: flex-end
+         
+          }
+          .navdiv {
+              display: flex;
+              justify-content: flex-end; 
+              gap: 30px; 
+          }
+          .navdiv button {
+              background-color: hsla(240, 100%, 100%, 0.918);
+              color: rgba(26, 10, 100, 0.8);
+              border: black;
+              padding: 1rem 1.2rem;
+              border-radius: 25px;
+              cursor: pointer;
+             
+          }
+          .navdiv button a {
+              text-decoration: none;
+              color: rgba(26, 10, 100, 0.8);
+              font-weight: bold;
+          }
+          .navdiv button:hover {
+              background-color: #616163;
+              
+          }
+          .cta-section {
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+  
+        .cta-section h2 {
+            font-size: 2rem;
+            color: #1a0a64;
+            margin-bottom: 1rem;
+        }
+  
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+  
+        .cta-section button {
+            background-color: #1a0a64;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+  
+        .cta-section button:hover {
+            background-color: #616163;
+        }
+  
+        </style>      
+</head>
+<body>
+    <nav class="navbar ">
+      <div class="navdiv">
+        
+        <!--<li> <a href=# >HOME</a></li> -->
+        <button><a href="/loginpage"> LOGIN</a></button>
+        <button><a href="/signuppage"> SIGN UP</a></button>
+        
+      </div>  
+    </nav>
+    <section class="cta-section">
+      <h2>Opp's !!! why are you still here?</h2>
+      <h2>Ready to buy or access exclusive products?</h2>
+      <p>To enjoy all the amazing productss, please log in or sign up. It's quick and easy!</p>
+      <button onclick="window.location.href='/loginpage'">LOGIN</button>
+      <button onclick="window.location.href='/signuppage'">SIGN UP</button>
+    </section>
+</body>
+</html>

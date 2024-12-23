@@ -1,0 +1,35 @@
+
+
+
+
+.navbar {
+    background-color: rgba(26, 10, 100, 0.8);
+    box-shadow: 0 4px 6px rgba(235, 235, 238, 0.671);
+    padding: 1.5rem;
+    border-radius: 15px;
+    justify-content: flex-end
+   
+    }
+    .navdiv {
+        display: flex;
+        justify-content: flex-end; 
+        gap: 30px; 
+    }
+    .navdiv button {
+        background-color: hsla(240, 100%, 100%, 0.918);
+        color: rgba(26, 10, 100, 0.8);
+        border: black;
+        padding: 1rem 1.2rem;
+        border-radius: 25px;
+        cursor: pointer;
+       
+    }
+    .navdiv button a {
+        text-decoration: none;
+        color: rgba(26, 10, 100, 0.8);
+        font-weight: bold;
+    }
+    .navdiv button:hover {
+        background-color: #616163;
+        
+    }
